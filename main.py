@@ -116,36 +116,9 @@ def signal(ohlc_df, ichimoku_df, current_price):
     return [buy_signal_df, sell_signal_df]
 
 
-def backtest(ticker, ohlc_df, signal_df):
-    wallet = 50
-    buy_signal_df = signal_df[0]
-    sell_signal_df = signal_df[1]
-    position = pd.DataFrame()
-
-#    sell_signal_df['Sell'] = np.where(sell_signal_df['Sell'] <= buy_signal_df['Buy'], np.NaN, sell_signal_df['Sell'])
-#    position = buy_signal_df.merge(sell_signal_df,left_on="A",right_on="G")
-#    position['Position'] = pd.concat([buy_signal_df['Buy'], sell_signal_df['Sell']])
-#    position['Stock_returns'] = np.log(ohlc_df['Open']) - np.log(ohlc_df['Open'].shift(1))
-#    position['Strategy_returns'] = position['Stock_returns'] * position['Position']
-#    print(position)
-
-    return None
-
-
-def broker(signal_df):
-    buy_signal_df = signal_df[0]
-    sell_signal_df = signal_df[1]
-#    for i in range(len(buy_signal_df)):
-    return None
-
-
 def plot_signals(ohlc_df, signal_df):
     buy_signal_df = signal_df[0]
     sell_signal_df = signal_df[1]
-
-#    for index in range(len(buy_signal_df)):
-#        buy_signal_df = buy_signal_df.append(pd.Series({'Index': ohlc_df['Low'][index]}, index=[1]), ignore_index=True)
-#        print(buy_signal_df)
     for buy_signals in range(1, len(buy_signal_df)):                                     
         plt.text(buy_signal_df['Buy'][buy_signals], ohlc_df['Low'][buy_signals], 'Buy', bbox=dict(facecolor='lightgreen', alpha=0.5), va = "top", ha="right")
     for sell_signals in range(1, len(sell_signal_df)):                                      
